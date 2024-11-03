@@ -1,0 +1,1 @@
+from configs.oauth.google import GoogleOAuthConfig
