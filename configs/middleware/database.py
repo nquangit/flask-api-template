@@ -31,7 +31,7 @@ class DatabaseConfig:
 
     DB_DATABASE: str = Field(
         description="db database",
-        default="robokihome",
+        default="flask_app",
     )
 
     DB_CHARSET: str = Field(

@@ -1,12 +1,12 @@
 import jwt
 from werkzeug.exceptions import Unauthorized
 
-from configs import roboki_home_config
+from configs import app_config
 
 
 class PassportService:
     def __init__(self):
-        self.sk = roboki_home_config.SECRET_KEY
+        self.sk = app_config.SECRET_KEY
 
     def issue(self, payload):
         return jwt.encode(payload, self.sk, algorithm="HS256")

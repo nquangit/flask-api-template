@@ -6,9 +6,9 @@ from configs.feature import SecurityConfig
 from configs.middleware import DatabaseConfig
 from configs.oauth import GoogleOAuthConfig
 
-class RobokiHomeConfig(DeploymentConfig, SecurityConfig, DatabaseConfig, GoogleOAuthConfig):
+class AppConfig(DeploymentConfig, SecurityConfig, DatabaseConfig, GoogleOAuthConfig):
     """
-    Roboki Home configs
+    App configs
     """
 
     model_config = SettingsConfigDict(

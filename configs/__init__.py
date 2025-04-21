@@ -1,3 +1,3 @@
-from .app_config import RobokiHomeConfig
+from .app_config import AppConfig
 
-roboki_home_config = RobokiHomeConfig()
+app_config = AppConfig()

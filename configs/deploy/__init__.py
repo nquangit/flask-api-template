@@ -9,7 +9,7 @@ class DeploymentConfig(BaseSettings):
 
     APPLICATION_NAME: str = Field(
         description="application name",
-        default="Roboki Home",
+        default="Flask App",
     )
 
     DEBUG: bool = Field(

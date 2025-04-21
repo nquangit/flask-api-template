@@ -13,7 +13,7 @@ from werkzeug.exceptions import Unauthorized
 from flask import Flask, Response, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from configs import roboki_home_config
+from configs import app_config
 
 from extensions import (
     ext_database,
@@ -51,7 +51,7 @@ def register_blueprints(app):
     app.register_blueprint(console_api_bp, url_prefix="/api")
 
 
-class RobokiHomeApp(Flask):
+class FlaskApp(Flask):
     pass
 
 
@@ -60,11 +60,11 @@ def create_flask_app_with_configs() -> Flask:
     create a raw flask app
     with configs loaded from .env file
     """
-    roboki_home_app = RobokiHomeApp(__name__)
-    roboki_home_app.config.from_mapping(roboki_home_config.model_dump())
+    flask_app = FlaskApp(__name__)
+    flask_app.config.from_mapping(app_config.model_dump())
 
     # populate configs into system environment variables
-    for key, value in roboki_home_app.config.items():
+    for key, value in flask_app.config.items():
         if isinstance(value, str):
             os.environ[key] = value
         elif isinstance(value, int | float | bool):
@@ -72,7 +72,7 @@ def create_flask_app_with_configs() -> Flask:
         elif value is None:
             os.environ[key] = ""
 
-    return roboki_home_app
+    return flask_app
 
 
 def create_app() -> Flask:
