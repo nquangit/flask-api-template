@@ -4,7 +4,7 @@ from models.user import User
 from extensions.ext_database import db
 from libs.passport import PassportService
 from datetime import datetime, timedelta, timezone
-from configs import roboki_home_config
+from configs import app_config
 from models.user import User
 
 
@@ -22,7 +22,7 @@ class AccountService:
             )
 
             # Check Audience
-            if id_info["aud"] not in roboki_home_config.GOOGLE_CLIENT_IDS:
+            if id_info["aud"] not in app_config.GOOGLE_CLIENT_IDS:
                 raise ValueError("Could not verify the audience.")
 
             # Lấy thông tin người dùng từ token
@@ -59,7 +59,7 @@ class AccountService:
         payload = {
             "user_id": user.id,
             "exp": datetime.now(timezone.utc).replace(tzinfo=None) + exp,
-            "iss": roboki_home_config.EDITION,
+            "iss": app_config.EDITION,
             "sub": "User Account Token",
         }
 
