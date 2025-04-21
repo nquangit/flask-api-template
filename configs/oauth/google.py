@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings
 from pydantic import Field, computed_field
 from typing import Optional
 
+
 class GoogleOAuthConfig(BaseSettings):
     GOOGLE_CLIENT_ID: Optional[str] = Field(
         description="Google OAuth Client ID",
@@ -20,5 +21,8 @@ class GoogleOAuthConfig(BaseSettings):
 
     @computed_field
     @property
-    def GOOGLE_CLIENT_IDS(self) -> list[str]:
-        return self.GOOGLE_CLIENT_ID.split(",")
+    def GOOGLE_CLIENT_IDS(self) -> list[str] | None:
+        if self.GOOGLE_CLIENT_ID:
+            return self.GOOGLE_CLIENT_ID.split(",")
+        else:
+            return None
