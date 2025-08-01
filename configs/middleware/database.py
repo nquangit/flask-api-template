@@ -6,7 +6,7 @@ from urllib.parse import quote_plus
 class DatabaseConfig:
     DATABASE_URI: str = Field(
         description="database uri",
-        default="sqlite:///db.sqlite3",
+        default="db.sqlite3",
     )
 
     DB_HOST: str = Field(
@@ -46,7 +46,7 @@ class DatabaseConfig:
 
     SQLALCHEMY_DATABASE_URI_SCHEME: str = Field(
         description="db uri scheme",
-        default="postgresql",
+        default="sqlite",
     )
 
     @computed_field
