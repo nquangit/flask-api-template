@@ -39,6 +39,7 @@ def initialize_extensions(app):
 # register blueprint routers
 def register_blueprints(app):
     from controllers.console import bp as console_api_bp
+    from controllers.ui import bp as ui_bp
 
     CORS(
         console_api_bp,
@@ -48,6 +49,8 @@ def register_blueprints(app):
         methods=["GET", "PUT", "POST", "DELETE", "OPTIONS", "PATCH"],
         expose_headers=["X-App"],
     )
+
+    app.register_blueprint(ui_bp)
     app.register_blueprint(console_api_bp, url_prefix="/api")
 
 

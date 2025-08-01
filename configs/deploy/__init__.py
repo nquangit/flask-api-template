@@ -31,3 +31,8 @@ class DeploymentConfig(BaseSettings):
         description="deployment environment, default to PRODUCTION.",
         default="PRODUCTION",
     )
+
+    CURRENT_VERSION: str = Field(
+        description="App version",
+        default="1.0.0",
+    )
